@@ -1,0 +1,13 @@
+{
+  "dbtype": "mysql",
+  "port": 3306,
+  "dbname": "mydb",
+  "read": [{ "host": "localhost", "username": "root", "password": "123456" }],
+  "write": { "host": "localhost", "username": "root", "password": "123456" },
+  "pool": {
+    "maxConnections": 20,
+    "minConnections": 0,
+    "maxIdleTime": 30000
+  },
+  "modelPath": "models"
+}

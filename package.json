@@ -1,0 +1,36 @@
+{
+  "name": "koa2sequelizedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lienren/koa2sequelizedemo.git"
+  },
+  "keywords": [
+    "koa2",
+    "sequelize"
+  ],
+  "author": "Lienren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lienren/koa2sequelizedemo/issues"
+  },
+  "homepage": "https://github.com/lienren/koa2sequelizedemo#readme",
+  "dependencies": {
+    "gd-bmp": "^1.2.4",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-orm": "^2.3.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "koa2-cors": "^2.0.5",
+    "md5": "^2.2.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6",
+    "uuid": "^3.2.1"
+  }
+}

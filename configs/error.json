@@ -1,0 +1,22 @@
+{
+  "api_not_exists": {
+    "in_msg": "api url is not exists!",
+    "out_msg": "API接口地址不存在！"
+  },
+  "token_is_error": {
+    "in_msg": "token is error!",
+    "out_msg": "Token错误！"
+  },
+  "loginname_not_exists": {
+    "in_msg": "loginname is not exists!",
+    "out_msg": "登录用户名不能为空！"
+  },
+  "loginpwd_not_exists": {
+    "in_msg": "loginpwd is not exists!",
+    "out_msg": "登录密码不能为空！"
+  },
+  "login_is_error": {
+    "in_msg": "loginname or loginpwd is error!",
+    "out_msg": "登录用户名或密码错误！"
+  }
+}
