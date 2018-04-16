@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-04-09 16:26:02 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-04-10 20:12:41
+ * @Last Modified time: 2018-04-11 12:06:59
  */
 'use strict';
 
@@ -11,6 +11,7 @@ const Router = require('koa-router');
 const uuidv1 = require('uuid/v1');
 const date = require('../utils/date');
 const encrypt = require('../utils/encrypt');
+const comm = require('../utils/comm');
 const makeimgcode = require('../utils/makeimgcode');
 
 const router = new Router();
@@ -51,13 +52,10 @@ router
     next();
   })
   .post('/oauth/admin_code', async (ctx, next) => {
-    let p = 'ABCDEFGHKMNPQRSTUVWXYZ3456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      code += p.charAt((Math.random() * p.length) | 0);
-    }
-
-    let img = await makeimgcode.makeCapcha(code, 90, 30);
+    let code = comm.randCode(4);
+    let img = await makeimgcode.makeCapcha(code, 90, 30, {
+      ...{ bgColor: 0xf3f3f3, topMargin: { base: 5, min: -8, max: 8 } }
+    });
 
     ctx.body = {
       imgbase64: 'data:image/bmp;base64,' + img.getFileData().toString('base64')

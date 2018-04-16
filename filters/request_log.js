@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-04-10 16:52:53 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-04-10 20:11:16
+ * @Last Modified time: 2018-04-11 11:35:21
  */
 'use strict';
 
@@ -17,8 +17,6 @@ async function save_db_log(ctx, next) {
     returntime: ctx.work.after_time,
     taketime: ctx.work.after_time - ctx.work.before_time
   });
-
-  console.log('result:', result);
 
   return result;
 }

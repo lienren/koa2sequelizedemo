@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-04-09 16:41:32 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-04-10 19:26:31
+ * @Last Modified time: 2018-04-13 15:34:48
  */
 'use strict';
 
@@ -15,7 +15,7 @@ const request_log = require('./request_log');
 async function token_verify(ctx, next) {
   let token = ctx.request.header.token || '';
   let url = ctx.request.url || '';
-  let unix_time = date.getTimeStamp();
+  let begin_time = date.getTimeStamp();
 
   try {
     let api = await ctx.orm().base_apis.findOne({
@@ -27,7 +27,7 @@ async function token_verify(ctx, next) {
     assert.notStrictEqual(api, null, 'api_not_exists');
 
     ctx.work = {
-      before_time: unix_time,
+      before_time: begin_time,
       url: url,
       api: api,
       param: ctx.request.body,

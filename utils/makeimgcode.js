@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-04-10 19:31:57 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-04-10 19:58:30
+ * @Last Modified time: 2018-04-11 11:55:52
  */
 'use strict';
 
@@ -11,13 +11,16 @@ const comm = require('./comm');
 
 module.exports = {
   // 制造验证码图片
-  makeCapcha: (code, bmpWidth = 100, bmpHeight = 40, bgColor = 0x000000) => {
+  makeCapcha: (
+    code,
+    bmpWidth = 100,
+    bmpHeight = 40,
+    { bgColor = 0x000000, leftMargin = { base: 15, min: 2, max: 8 }, topMargin = { base: 8, min: -10, max: 10 } }
+  ) => {
     let img = new BMP24(bmpWidth, bmpHeight);
     img.fillRect(0, 0, img.w, img.h, bgColor);
-    img.drawCircle(comm.rand(0, img.w), comm.rand(0, img.h), comm.rand(10, img.h), comm.rand(0, 0xffffff));
 
-    //边框
-    img.drawRect(0, 0, img.w - 1, img.h - 1, comm.rand(0, 0xffffff));
+    img.drawCircle(comm.rand(0, img.w), comm.rand(0, img.h), comm.rand(10, img.h), comm.rand(0, 0xffffff));
 
     img.fillRect(
       comm.rand(0, img.w),
@@ -26,6 +29,7 @@ module.exports = {
       comm.rand(10, img.h),
       comm.rand(0, 0xffffff)
     );
+
     img.drawLine(
       comm.rand(0, img.w),
       comm.rand(0, img.h),
@@ -50,14 +54,15 @@ module.exports = {
       }
     }
 
+    // 画验证码
     let fonts = [BMP24.font8x16, BMP24.font12x24, BMP24.font16x32];
-    let x = comm.rand(5, 15);
-    let y = 8;
+    let x = leftMargin.base;
+    let y = topMargin.base;
     for (let i = 0; i < code.length; i++) {
       let f = fonts[(Math.random() * fonts.length) | 0];
-      y = 8 + comm.rand(-10, 10);
+      y = topMargin.base + comm.rand(topMargin.min, topMargin.max);
       img.drawChar(code[i], x, y, f, comm.rand(0, 0xffffff));
-      x += f.w + comm.rand(2, 8);
+      x += f.w + comm.rand(leftMargin.min, leftMargin.max);
     }
     return img;
   }
