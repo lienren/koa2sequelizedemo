@@ -13,11 +13,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     param: {
-      type: DataTypes.STRING(2000),
+      type: DataTypes.TEXT,
       allowNull: true
     },
     body: {
-      type: DataTypes.STRING(2000),
+      type: DataTypes.TEXT,
       allowNull: true
     },
     urlname: {

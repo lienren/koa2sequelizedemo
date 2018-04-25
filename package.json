@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lienren/koa2sequelizedemo#readme",
   "dependencies": {
+    "big-json-streamer": "^1.0.6",
     "gd-bmp": "^1.2.4",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
